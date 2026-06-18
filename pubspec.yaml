@@ -1,0 +1,46 @@
+name: peblo_story_tales
+description: "AI Story Buddy & Quiz Component — A child-friendly Flutter app where an AI Buddy narrates a story using TTS and presents a data-driven quiz."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.7
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State management
+  flutter_riverpod: ^2.6.1
+
+  # Text-to-Speech
+  flutter_tts: ^4.2.0
+
+  # Confetti celebration effect
+  confetti: ^0.8.0
+
+  # Staggered & declarative animations
+  flutter_animate: ^4.5.2
+
+  # Google Fonts for playful typography
+  google_fonts: ^6.2.1
+
+  # Haptic / vibration feedback
+  vibration: ^2.0.0
+
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/lottie/
+    - assets/data/
