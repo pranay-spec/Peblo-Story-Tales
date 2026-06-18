@@ -156,11 +156,16 @@ Riverpod was chosen over other state management solutions for several reasons:
 ### Provider Architecture
 
 ```mermaid
-graph LR
-A[TTS Error] --> B[AudioState.error]
-B --> C[StoryErrorWidget displayed]
-C --> D[Friendly Error Message]
-D --> E[Retry Button Shown]
+graph TD
+    A[audioProvider] -->|AudioState changes| D[HomeScreen]
+    B[quizProvider] -->|QuizProviderState| D
+    C[uiProvider] -->|UIProviderState| D
+    
+    A -->|onNarrationComplete| C
+    B -->|isCorrect| C
+    
+    D -->|Read Button Tap| A
+    D -->|Option Tap| B
 ```
 
 #### Audio Provider (`audioProvider`)
@@ -301,11 +306,13 @@ The app handles TTS failures gracefully with child-appropriate messaging:
 
 ### Error Flow
 
+### Error Flow
+
 ```mermaid
 graph LR
     A[TTS Error] --> B[AudioState.error]
     B --> C[StoryErrorWidget displayed]
-    C --> D[Child sees: "Oh no! Pip couldn't tell the story right now."]
+    C --> D["Child sees: 'Oh no! Pip couldn't tell the story right now.'"]
     D --> E[Retry button shown]
     E --> F[User taps retry]
     F --> G[State reset to idle]
