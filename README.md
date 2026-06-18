@@ -156,16 +156,11 @@ Riverpod was chosen over other state management solutions for several reasons:
 ### Provider Architecture
 
 ```mermaid
-graph TD
-    A[audioProvider] -->|AudioState changes| D[HomeScreen]
-    B[quizProvider] -->|QuizProviderState| D
-    C[uiProvider] -->|UIProviderState| D
-    
-    A -->|onNarrationComplete| C
-    B -->|isCorrect| C
-    
-    D -->|Read Button Tap| A
-    D -->|Option Tap| B
+graph LR
+A[TTS Error] --> B[AudioState.error]
+B --> C[StoryErrorWidget displayed]
+C --> D[Friendly Error Message]
+D --> E[Retry Button Shown]
 ```
 
 #### Audio Provider (`audioProvider`)
